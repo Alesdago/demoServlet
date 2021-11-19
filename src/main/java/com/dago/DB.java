@@ -38,5 +38,41 @@ public class DB {
 			}
 			return cursor;
 		}
+		
+		public static FindIterable<Document> ricercaMarcaAuto(String marca) {
+			
+			// Get the particular record from the mongodb collection		
+			List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+			obj.add(new BasicDBObject("marca", marca));
+
+			// Form a where query
+			BasicDBObject whereQuery = new BasicDBObject();
+			whereQuery.put("$and", obj);
+			System.out.println("Sql query is?= " + whereQuery.toString());
+
+			FindIterable<Document> cursor = getConnection().getDatabase("automobili").getCollection("garage").find(whereQuery);
+			for(Document doc : cursor) {
+				System.out.println("Found?= " + doc);
+			}
+			return cursor;
+		}
+
+		public static FindIterable<Document> ricercaModelloAuto(String modello) {
+			
+			// Get the particular record from the mongodb collection		
+			List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+			obj.add(new BasicDBObject("modello", modello));
+		
+			// Form a where query
+			BasicDBObject whereQuery = new BasicDBObject();
+			whereQuery.put("$and", obj);
+			System.out.println("Sql query is?= " + whereQuery.toString());
+		
+			FindIterable<Document> cursor = getConnection().getDatabase("automobili").getCollection("garage").find(whereQuery);
+			for(Document doc : cursor) {
+				System.out.println("Found?= " + doc);
+			}
+			return cursor;
+		}
 	
 }

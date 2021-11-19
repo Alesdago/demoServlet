@@ -14,11 +14,11 @@ import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
 
-@WebServlet("/ricercaServlet")
-public class RicercaServlet extends HttpServlet {
+@WebServlet("/ricercaColore")
+public class RicercaColoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public RicercaServlet() {}
+    public RicercaColoreServlet() {}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Reading post parameters from the request
@@ -33,11 +33,17 @@ public class RicercaServlet extends HttpServlet {
 			List<String> lista = new ArrayList<String>();
 			FindIterable<Document> cursor = DB.ricercaColoreAuto(par);
 			for(Document doc: cursor) {
-				lista.add(doc.toString());
+				lista.add(doc.getString("marca") + " " + doc.getString("modello") + " " + doc.getString("colore") + " (id: " + doc.getInteger("id").toString() + ")");
 			}
-			request.setAttribute("lista", lista);
-			request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
-			
+			System.out.println(lista);
+			if(lista.size() != 0) {
+				request.setAttribute("lista", lista);
+				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
+			}
+			else {
+				request.setAttribute("message", "Nessuna auto trovata con la ricerca = " + par);
+				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
+			}
 		}
 	}		
 

@@ -41,7 +41,7 @@ public class RicercaMarcaServlet extends HttpServlet {
 				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
 			}
 			else {
-				request.setAttribute("message", "Nessuna auto trovata con la ricerca = " + par);
+				request.setAttribute("message", "Nessuna auto trovata con la ricerca della marca: " + par);
 				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
 			}
 		}

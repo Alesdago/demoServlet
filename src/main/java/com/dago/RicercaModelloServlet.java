@@ -41,7 +41,7 @@ public class RicercaModelloServlet extends HttpServlet {
 				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
 			}
 			else {
-				request.setAttribute("message", "Nessuna auto trovata con la ricerca = " + par);
+				request.setAttribute("message", "Nessuna auto trovata con la ricerca del modello: " + par);
 				request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
 			}
 		}

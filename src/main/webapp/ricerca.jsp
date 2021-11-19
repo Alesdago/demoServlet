@@ -8,14 +8,20 @@
 <title>Ricerca</title>
 </head>
 <body>
-	<h1>Lista automobili della ricerca effettuata</h1>
-	<ul>
+	<h1 align="center">Lista automobili della ricerca effettuata</h1>
+	<br>
+	<div align="center">
+	  	<ul style="list-style-position:inside">
 		<c:forEach var="elementoLista" items="${lista}">
 			<li>${elementoLista}</li>	
 		</c:forEach>  
-	</ul>
-	<h3 style="color: red;">${message}</h3>
+		</ul>
+	</div>
+	<h3 style="color: red;" align="center">${message}</h3>
 	<br>
-	<a href='index.jsp'><button>Torna alla ricerca</button></a> 
+	<div align="center">
+		<a href='index.jsp'><button>Torna alla ricerca</button></a> 
+	</div>
+	
 </body>
 </html>

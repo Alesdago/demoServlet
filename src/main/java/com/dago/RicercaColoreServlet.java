@@ -22,7 +22,7 @@ public class RicercaColoreServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Reading post parameters from the request
-		String par = request.getParameter("colore"); 
+		String par = request.getParameter("colore").toLowerCase(); 
 		System.out.println(par);		
 
 		// Checking for null and empty values
